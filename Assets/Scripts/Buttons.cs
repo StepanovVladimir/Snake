@@ -10,6 +10,18 @@ public class Buttons : MonoBehaviour
         SceneManager.LoadScene("Main");
     }
     
+    public void Continue()
+    {
+        if (PlayerPrefs.GetInt("Levels") == 0)
+        {
+            SceneManager.LoadScene("Training");
+        }
+        else
+        {
+            SceneManager.LoadScene("Level" + PlayerPrefs.GetInt("Levels"));
+        }
+    }
+
     public void Play()
     {
         SceneManager.LoadScene("Levels");

@@ -12,8 +12,6 @@ public class TrainingControl : MonoBehaviour
     public GameObject hint1;
     public GameObject hint2;
     public int nextLevel;
-    public GameObject pause;
-    public GameObject pausePanel;
 
     [HideInInspector]
     public GameControl.GameState gameState;
@@ -46,6 +44,7 @@ public class TrainingControl : MonoBehaviour
         for (int i = 0; i < segments[0].GetComponent<TrainingSegmentHandler>().cells.Length; i++)
         {
             snake.GetComponent<TrainingSnake>().cells[i + offset].SetActive(false);
+            snake.GetComponent<TrainingSnake>().capsules[i + offset].SetActive(true);
         }
 
         offset += segments[0].GetComponent<TrainingSegmentHandler>().cells.Length;
@@ -65,7 +64,6 @@ public class TrainingControl : MonoBehaviour
                 {
                     segment.SetActive(false);
                 }
-                pause.SetActive(false);
                 hintPanel.SetActive(true);
             }
         }
@@ -81,15 +79,12 @@ public class TrainingControl : MonoBehaviour
         {
             segment.SetActive(false);
         }
-        pause.SetActive(false);
         hint1.SetActive(false);
         hint2.SetActive(false);
-        pausePanel.SetActive(true);
     }
 
     public void OffPause()
     {
-        pausePanel.SetActive(false);
         foreach (GameObject segment in segments)
         {
             segment.SetActive(true);
@@ -103,7 +98,6 @@ public class TrainingControl : MonoBehaviour
         {
             hint2.SetActive(true);
         }
-        pause.SetActive(true);
     }
 
     public void TrySelf()
@@ -113,7 +107,6 @@ public class TrainingControl : MonoBehaviour
         {
             segment.SetActive(true);
         }
-        pause.SetActive(true);
         GenerateColors(Random.Range(0, segments.Length), 1);
     }
 
@@ -181,8 +174,9 @@ public class TrainingControl : MonoBehaviour
         {
             segment.SetActive(false);
         }
-        pause.SetActive(false);
         losePanel.SetActive(true);
+        hint1.SetActive(false);
+        hint2.SetActive(false);
     }
 
     void PlayerWin()
@@ -196,7 +190,6 @@ public class TrainingControl : MonoBehaviour
         {
             segment.SetActive(false);
         }
-        pause.SetActive(false);
 
         snake.transform.position = Vector3.MoveTowards(snake.transform.position, target, Time.deltaTime * 5);
 

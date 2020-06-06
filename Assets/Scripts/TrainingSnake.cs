@@ -5,6 +5,7 @@ using UnityEngine;
 public class TrainingSnake : MonoBehaviour
 {
     public GameObject[] cells;
+    public GameObject[] capsules;
 
     void Awake()
     {
@@ -17,5 +18,15 @@ public class TrainingSnake : MonoBehaviour
         cells[6].GetComponent<SpriteRenderer>().color = GameControl.colors[1];
         cells[7].GetComponent<SpriteRenderer>().color = GameControl.colors[4];
         cells[8].GetComponent<SpriteRenderer>().color = GameControl.colors[0];
+
+        capsules[0].GetComponent<Renderer>().material.color = GameControl.colors[2];
+        capsules[1].GetComponent<Renderer>().material.color = GameControl.colors[3];
+        capsules[2].GetComponent<Renderer>().material.color = GameControl.colors[4];
+        capsules[3].GetComponent<Renderer>().material.color = GameControl.colors[5];
+        capsules[4].GetComponent<Renderer>().material.color = GameControl.colors[0];
+        capsules[5].GetComponent<Renderer>().material.color = GameControl.colors[1];
+        capsules[6].GetComponent<Renderer>().material.color = GameControl.colors[1];
+        capsules[7].GetComponent<Renderer>().material.color = GameControl.colors[4];
+        capsules[8].GetComponent<Renderer>().material.color = GameControl.colors[0];
     }
 }
